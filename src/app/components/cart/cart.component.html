@@ -1,0 +1,47 @@
+<div *ngIf="cartItems.length > 0; else emptyCart">
+    <h3>Cart Items</h3>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th> <!-- Add Action column for delete button -->
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of cartItems">
+                    <tr>
+                        <td>
+                            <img src="{{ item.imageUrl }}" alt="{{ item.name }}" class="cart-image img-thumbnail">
+                        </td>
+                        <td>{{ item.name }}</td>
+                        <td>${{ item.price * item.quantity }}</td>
+
+                        <td>
+                            <div class="input-group" style="width: 100px;">
+                              <button class="btn btn-outline-secondary btn-sm" type="button" style="width: 30px;" (click)="decreaseQuantity(item)">-</button>
+                              <input type="text" class="form-control text-center" [value]="item.quantity" readonly>
+                              <button class="btn btn-outline-secondary btn-sm" type="button" style="width: 30px;" (click)="increaseQuantity(item)">+</button>
+                            </div>
+                          </td>
+                          
+                        <td>
+                            <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ng-template #emptyCart>
+    <div class="empty-cart text-center">
+        <p>Your cart is empty !!!!!!!</p>
+        <h1 class="text-black ">Add Something </h1>
+    </div>
+</ng-template>

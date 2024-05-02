@@ -1,0 +1,68 @@
+/* Increase image size */
+.cart-image {
+    max-width: 80px; /* Adjust the size as needed */
+    height: auto;
+}
+
+/* Set different background colors for even and odd rows */
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Responsive styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+.table th,
+.table td {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+.table tbody+tbody {
+    border-top: 2px solid #dee2e6;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* Customizing button width */
+.input-group .btn {
+    width: 30px;
+}
+
+.input-group .form-control {
+    flex: 1;
+    width: auto;
+}
+.empty-cart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 24px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+    background-color: #fff; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    padding: 20px; /* Padding */
+    border-radius: 10px; /* Border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+    color: red;
+  }
+  

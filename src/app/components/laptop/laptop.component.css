@@ -1,0 +1,100 @@
+/* home.component.css */
+.card {
+    width: 18rem;
+  }
+  
+  .card-img-top {
+    max-height: 200px;
+  }
+/* Add this CSS to your component's stylesheet (e.g., home.component.css) */
+
+/* Card styles */
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Button styles */
+  .btn-view {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-view:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-add-to-cart {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .btn-add-to-cart:hover {
+    background-color: #218838;
+    border-color: #218838;
+  }
+/* Add this CSS to your component's stylesheet (e.g., home.component.css) */
+
+/* Card styles */
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, cursor 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 1.25rem;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #6c757d;
+  }
+  
+  /* Button styles */
+/* Add this CSS to your component's stylesheet (e.g., home.component.css) */
+
+/* Button styles */

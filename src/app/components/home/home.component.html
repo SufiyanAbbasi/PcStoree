@@ -1,0 +1,24 @@
+<!-- home.component.html -->
+<div class="container">
+    <h1 class="text-uppercase " style="color:#2e65a4">Welcome to our store!</h1>
+    <p class="store-description">
+        We offer a wide range of electronic devices, including laptops, desktops, and mobile phones, 
+        carefully selected to meet your needs. Explore our categories below and find the perfect device 
+        for you!
+      </p>
+    <div class="category-container">
+      <div class="category" (click)="navigateTo('/laptop')">
+        <img src="../../../assets/images/lapsc.avif" alt="Laptop">
+        <h2>Laptops</h2>
+      </div>
+      <div class="category" (click)="navigateTo('/desktop')">
+        <img src="../../../assets/images/dessc.avif" alt="Desktop">
+        <h2>Desktops</h2>
+      </div>
+      <div class="category" (click)="navigateTo('/mobile')">
+        <img src="../../../assets/images/mobsc.avif" alt="Mobile">
+        <h2>Mobiles</h2>
+      </div>
+    </div>
+  </div>
+  
