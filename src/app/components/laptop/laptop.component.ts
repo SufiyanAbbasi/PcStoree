@@ -78,8 +78,10 @@ export class LaptopComponent {
   }
 
   viewItem(item: Item) {
-    alert("item viewed ")
+    // alert("item viewed ")
     console.log('View item:', item);
+    this.router.navigate(['/details', 'laptops', item.id]);
+
   }
 
   addItemToCart(item: Item) {

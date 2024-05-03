@@ -11,7 +11,7 @@
                     <h5 class="card-title">{{ item.name }}</h5>
                     <p class="card-text">{{ item.description }}</p>
                     <p class="card-text">Price: ${{ item.price }}</p>
-                    <button class="btn btn-primary">View</button>
+                    <button class="btn btn-primary" (click)="viewItem(item)">View</button>
                     <button class="btn btn-success ms-2 " (click)="addItemToCart(item)">Add to Cart</button>
                 </div>
             </div>

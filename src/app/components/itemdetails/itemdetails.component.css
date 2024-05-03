@@ -1,0 +1,31 @@
+/* Add this CSS to your global styles or component-specific CSS file */
+
+.container {
+    cursor: pointer;
+    max-width: 800px; /* Limit the width of the container for better readability */
+    margin: auto; /* Center the container horizontally */
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow for depth */
+  }
+  
+  .card-img-top {
+    max-height: 300px; /* Limit the height of the image */
+    object-fit: cover; /* Maintain aspect ratio while covering the area */
+  }
+  
+  .card-title {
+    font-size: 1.5rem; /* Increase the font size of the item title */
+    margin-top: 1rem; /* Add some space above the title */
+  }
+  
+  .card-text {
+    font-size: 1.2rem; /* Increase the font size of the item description */
+    color: #333; /* Darken the text color for better readability */
+  }
+  
+  .alert {
+    margin-top: 1rem; /* Add some space above the alert message */
+  }
+  

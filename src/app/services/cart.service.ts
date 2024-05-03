@@ -1,47 +1,62 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../interface/item';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   private cart: Item[] = [];
-
-  constructor() { }
-
+  private cartItemCount = new BehaviorSubject<number>(0);
+  constructor(private router: Router) { }
   addToCart(item: Item): void {
     const itemExists = this.cart.find(cartItem => cartItem.id === item.id);
     if (!itemExists) {
-      // If item does not exist in cart, add it with quantity 1
       const newItem: Item = { ...item, quantity: 1 };
       this.cart.push(newItem);
-      console.log('Added to cart:', newItem);
     } else {
-      // If item already exists in cart, increment its quantity by 1
       itemExists.quantity++;
-      console.log('Increased quantity of item:', itemExists);
     }
-  }
-
-  removeFromCart(item: Item): void {
-    const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
-    if (index !== -1) {
-      this.cart.splice(index, 1);
-      console.log('Removed from cart:', item);
-    } else {
-      console.log('Item not found in cart');
-    }
+    this.cartItemCount.next(this.cartItemCount.value + 1); // Update cart item count
+    this.router.navigate(['/cart']);
   }
 
   getCartItems(): Item[] {
     return this.cart;
   }
 
+  getCartItemCount(): BehaviorSubject<number> {
+    return this.cartItemCount;
+  }
+
+  // removeFromCart(item: Item): void {
+  //   const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
+  //   if (index !== -1) {
+  //     this.cart.splice(index, 1);
+  //     console.log('Removed from cart:', item);
+  //   } else {
+  //     console.log('Item not found in cart');
+  //   }
+  //   this.cartItemCount.next(this.cartItemCount.value - 1);
+  // }
+  removeFromCart(item: Item): void {
+    const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
+    if (index !== -1) {
+      this.cart.splice(index, 1);
+      // Decrement cart item count before emitting update
+      this.cartItemCount.next(this.cartItemCount.value - 1);
+      console.log('Removed from cart:', item);
+    } else {
+      console.log('Item not found in cart');
+    }
+  }
+
   clearCart(): void {
     this.cart = [];
     console.log('Cart cleared');
   }
-  
+
   updateCart(cartItems: Item[]): void {
     this.cart = [...cartItems];
     console.log('Cart updated:', this.cart);

@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Item Details</h2>
+    <div *ngIf="item; else noItemTemplate" class="card">
+      <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image" style="max-width: 100%; height: auto;">
+      <div class="card-body">
+        <h3 class="card-title">{{ item.name }}</h3>
+        <p class="card-text">{{ item.description }}</p>
+        <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
+        <button class="btn btn-primary" (click)="addToCart(item)">Add to Cart</button>
+      </div>
+    </div>
+    <ng-template #noItemTemplate>
+      <div class="alert alert-warning" role="alert">
+        Item not found.
+      </div>
+    </ng-template>
+  </div>
+  

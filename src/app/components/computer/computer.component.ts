@@ -74,11 +74,13 @@ export class ComputerComponent {
   ngOnInit(): void {
   }
 
-  viewItem(item: any) {
-    // Implement logic to view item
-    this.router.navigate(['/item', item.id]);
+  viewItem(item: Item) {
+    // alert("item viewed ")
     console.log('View item:', item);
+    this.router.navigate(['/details', 'computers', item.id]);
+
   }
+
 
   addItemToCart(item: Item) {
     // Implement logic to add item to cart

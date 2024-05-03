@@ -72,10 +72,13 @@ export class MobileComponent {
 
 
 
-  viewItem(items: Item) {
-    this.router.navigate(['/item', items.id]);
-    console.log('View item:', items);
+  viewItem(item: Item) {
+    // alert("item viewed ")
+    console.log('View item:', item);
+    this.router.navigate(['/details', 'mobiles', item.id]);
+
   }
+
   addItemToCart(item: Item) {
     // Implement logic to add item to cart
     alert("item Added to cart ")
