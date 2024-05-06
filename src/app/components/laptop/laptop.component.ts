@@ -4,6 +4,8 @@ import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Item } from '../../interface/item';
 import { CartService } from '../../services/cart.service';
+import { SearchService } from '../../services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-laptop',
@@ -13,7 +15,9 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './laptop.component.css'
 })
 export class LaptopComponent {
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService, private searchService: SearchService) { }
+  filteredItems: Item[] = []; 
+  private searchTermSubscription: Subscription | undefined;
 
   items: Item[] = [
     {
@@ -74,7 +78,26 @@ export class LaptopComponent {
 
 
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
+  //   this.searchTermSubscription = this.searchService.searchTerm$.subscribe(
+  //     term => {
+  //       this.filteredItems = this.items.filter(
+  //         item => item.name.toLowerCase().includes(term)
+  //       );
+  //     }
+  //   );
+  // }
+  ngOnInit() {
+    // Fetch initial items (optional)
+    this.searchService.searchTerm$.subscribe(searchTerm => {
+      this.filteredItems = this.items.filter(item =>
+        item.name.toLowerCase().includes(searchTerm)
+      );
+    });
+  }
+
+  ngOnDestroy() {
+    this.searchTermSubscription?.unsubscribe();
   }
 
   viewItem(item: Item) {

@@ -8,8 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CartService {
   private cart: Item[] = [];
-  private cartItemCount = new BehaviorSubject<number>(0);
+  public cartItemCount = new BehaviorSubject<number>(0);
   constructor(private router: Router) { }
+
+
   addToCart(item: Item): void {
     const itemExists = this.cart.find(cartItem => cartItem.id === item.id);
     if (!itemExists) {
@@ -21,25 +23,7 @@ export class CartService {
     this.cartItemCount.next(this.cartItemCount.value + 1); // Update cart item count
     this.router.navigate(['/cart']);
   }
-
-  getCartItems(): Item[] {
-    return this.cart;
-  }
-
-  getCartItemCount(): BehaviorSubject<number> {
-    return this.cartItemCount;
-  }
-
-  // removeFromCart(item: Item): void {
-  //   const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
-  //   if (index !== -1) {
-  //     this.cart.splice(index, 1);
-  //     console.log('Removed from cart:', item);
-  //   } else {
-  //     console.log('Item not found in cart');
-  //   }
-  //   this.cartItemCount.next(this.cartItemCount.value - 1);
-  // }
+  
   removeFromCart(item: Item): void {
     const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
     if (index !== -1) {
@@ -50,6 +34,14 @@ export class CartService {
     } else {
       console.log('Item not found in cart');
     }
+  }
+
+  getCartItems(): Item[] {
+    return this.cart;
+  }
+
+  getCartItemCount(): BehaviorSubject<number> {
+    return this.cartItemCount;
   }
 
   clearCart(): void {

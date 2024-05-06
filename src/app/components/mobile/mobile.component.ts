@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Item } from '../../interface/item';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { SearchService } from '../../services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mobile',
@@ -12,10 +14,12 @@ import { CartService } from '../../services/cart.service';
 })
 export class MobileComponent {
   items: Item[] = [];
-  constructor(private router: Router, private cartService:CartService) { }
+  constructor(private router: Router, private cartService:CartService,  private searchService: SearchService) { }
+  filteredItems: Item[] = []; 
+  private searchTermSubscription: Subscription | undefined;
   mobitems: Item[] = [
     {
-      id: 1,
+      id: 13,
       name: 'Mobile - 1',
       imageUrl: '../../../assets/images/mob1.avif',
       description: 'IPhone',
@@ -24,7 +28,7 @@ export class MobileComponent {
 
     },
     {
-      id: 2,
+      id: 14,
       name: 'Mobile - 2',
       imageUrl: '../../../assets/images/mob2.avif',
       description: 'Huawei',
@@ -32,7 +36,7 @@ export class MobileComponent {
       quantity:1
     },
     {
-      id: 3,
+      id: 15,
       name: 'Mobile - 3',
       imageUrl: '../../../assets/images/mob3.avif',
       description: 'Redmi',
@@ -41,7 +45,7 @@ export class MobileComponent {
 
     },
     {
-      id: 4,
+      id: 16,
       name: 'Mobile - 4',
       imageUrl: '../../../assets/images/mob4.avif',
       description: 'IPhone',
@@ -50,7 +54,7 @@ export class MobileComponent {
 
     },
     {
-      id: 5,
+      id: 17,
       name: 'Mobile - 5',
       imageUrl: '../../../assets/images/mob5.avif',
       description: 'Realme',
@@ -59,7 +63,7 @@ export class MobileComponent {
 
     },
     {
-      id: 6,
+      id: 18,
       name: 'Mobile - 6',
       imageUrl: '../../../assets/images/mob6.avif',
       description: 'Samsung',
@@ -70,7 +74,19 @@ export class MobileComponent {
     // Add more items here...
   ];
 
+  ngOnInit(): void {
+    this.searchTermSubscription = this.searchService.searchTerm$.subscribe(
+      term => {
+        this.filteredItems = this.mobitems.filter(
+          item => item.name.toLowerCase().includes(term)
+        );
+      }
+    );
+  }
 
+  ngOnDestroy() {
+    this.searchTermSubscription?.unsubscribe();
+  }
 
   viewItem(item: Item) {
     // alert("item viewed ")

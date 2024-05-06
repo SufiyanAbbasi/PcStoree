@@ -3,7 +3,7 @@
     <h5 class="text-uppercase  text-muted  p-1 " style="letter-spacing: 4px;">Choosing the Right Mobile for You </h5>
     <div class="row mt-4">
 
-        @for(item of mobitems; track item.id){
+        @for(item of filteredItems; track item.id){
         <div class="col-sm-6 col-md-4 mb-4">
             <div class="card">
                 <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image">

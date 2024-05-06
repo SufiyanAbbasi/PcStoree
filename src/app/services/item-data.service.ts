@@ -59,7 +59,7 @@ export class ItemService {
     ],
     mobiles: [
       {
-        id: 1,
+        id: 13,
         name: 'Mobile - 1',
         imageUrl: '../../../assets/images/mob1.avif',
         description: 'IPhone',
@@ -67,7 +67,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 2,
+        id: 14,
         name: 'Mobile - 2',
         imageUrl: '../../../assets/images/mob2.avif',
         description: 'Huawei',
@@ -75,7 +75,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 3,
+        id: 15,
         name: 'Mobile - 3',
         imageUrl: '../../../assets/images/mob3.avif',
         description: 'Redmi',
@@ -83,7 +83,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 4,
+        id: 16,
         name: 'Mobile - 4',
         imageUrl: '../../../assets/images/mob4.avif',
         description: 'IPhone',
@@ -91,7 +91,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 5,
+        id: 17,
         name: 'Mobile - 5',
         imageUrl: '../../../assets/images/mob5.avif',
         description: 'Realme',
@@ -99,7 +99,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 6,
+        id: 18,
         name: 'Mobile - 6',
         imageUrl: '../../../assets/images/mob6.avif',
         description: 'Samsung',
@@ -109,7 +109,7 @@ export class ItemService {
     ],
     computers: [
       {
-        id: 1,
+        id: 7,
         name: 'Desktop - 1',
         imageUrl: '../../../assets/images/des1.avif',
         description: 'Dell',
@@ -117,7 +117,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 2,
+        id: 8,
         name: 'Desktop - 2',
         imageUrl: '../../../assets/images/des2.avif',
         description: 'HP',
@@ -125,7 +125,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 3,
+        id: 9,
         name: 'Desktop - 3',
         imageUrl: '../../../assets/images/des3.avif',
         description: 'Lenovo',
@@ -133,7 +133,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 4,
+        id: 10,
         name: 'Desktop - 4',
         imageUrl: '../../../assets/images/des4.avif',
         description: 'Pentium',
@@ -141,7 +141,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 5,
+        id: 11,
         name: 'Desktop - 5',
         imageUrl: '../../../assets/images/des5.avif',
         description: 'Core',
@@ -149,7 +149,7 @@ export class ItemService {
         quantity: 1
       },
       {
-        id: 6,
+        id: 12,
         name: 'Desktop - 6',
         imageUrl: '../../../assets/images/des6.avif',
         description: 'Acer',
