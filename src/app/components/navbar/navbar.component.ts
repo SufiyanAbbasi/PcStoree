@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showSearchBox = !['/', '/cart'].includes(event.url);
+        this.showSearchBox = !['/', '/cart','/home','/signup'].includes(event.url);
       }
     });
   }
@@ -48,10 +48,16 @@ export class NavbarComponent implements OnInit {
   }
 
   isHomeComponent(): boolean {
-    return this.router.url === '/';
+    return this.router.url === '/home';
   }
 
   isCartComponent(): boolean {
     return this.router.url === '/cart';
+  }
+  isReactiveFormComponent(): boolean {
+    return this.router.url === '/signup';
+  }
+  isTempdrivenComponent(): boolean {
+    return this.router.url === '/';
   }
 }

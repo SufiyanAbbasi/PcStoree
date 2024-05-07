@@ -5,6 +5,8 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { HomeComponent } from "./components/home/home.component";
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from "./components/footer/footer.component";
+import { ReactiveformComponent } from "./components/reactiveform/reactiveform.component";
+import { TempdrivenComponent } from "./components/tempdriven/tempdriven.component";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 @Component({
@@ -12,7 +14,7 @@ import { FooterComponent } from "./components/footer/footer.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, NavbarComponent, HomeComponent, HttpClientModule, FooterComponent]
+    imports: [CommonModule, RouterOutlet, NavbarComponent, HomeComponent, HttpClientModule, FooterComponent, ReactiveformComponent, TempdrivenComponent]
 })
 export class AppComponent {
   title = 'comlap';

@@ -1,0 +1,27 @@
+.btn-primary {
+    background-color: #a8719d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+
+    background-color: #954570;
+}
+.text-muted {
+    color: #777; /* Dark grey color */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add some letter spacing */
+    margin-top: 20px; /* Adjust top margin */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }

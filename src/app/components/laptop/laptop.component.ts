@@ -76,17 +76,6 @@ export class LaptopComponent {
     // Add more items here...
   ];
 
-
-
-  // ngOnInit(): void {
-  //   this.searchTermSubscription = this.searchService.searchTerm$.subscribe(
-  //     term => {
-  //       this.filteredItems = this.items.filter(
-  //         item => item.name.toLowerCase().includes(term)
-  //       );
-  //     }
-  //   );
-  // }
   ngOnInit() {
     // Fetch initial items (optional)
     this.searchService.searchTerm$.subscribe(searchTerm => {

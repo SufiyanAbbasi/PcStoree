@@ -1,0 +1,44 @@
+.btn-primary {
+    background-color: #a8719d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+
+    background-color: #954570;
+}
+.text-muted {
+    color: #777; /* Dark grey color */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add some letter spacing */
+    margin-top: 20px; /* Adjust top margin */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+
+  .custom-form {
+    width: 50%; /* Default width */
+    margin: auto; /* Center the form horizontally */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add box shadow */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .custom-form {
+      width: 80%; /* Increase width to 100% on small screens */
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .custom-form {
+      width: 100%; /* Increase width to 100% on small screens */
+    }
+  }

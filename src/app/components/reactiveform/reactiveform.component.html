@@ -1,0 +1,36 @@
+<h5 class="text-muted mt-4 text-center ">Sign Up Form</h5>
+<form class=" g-3 mt-5 " [formGroup]="userForm">
+    <div class="col-10 col-sm-8 col-md-4 m-auto  mt-3 fw-bold">
+      <label for="validationServer01" class="form-label">Name</label>
+      <input type="text" class="form-control " id="validationServer01" formControlName="name" required>
+      <div class="text-danger " *ngIf="userForm.controls['name'].invalid && (userForm.controls['name'].touched || userForm.controls['name'].touched)">
+        <span *ngIf="userForm.controls['name'].errors?.['required']">This is Required</span>
+        <span *ngIf="userForm.controls['name'].errors?.['minlength']">Must be 6 char long</span>
+      </div>
+    </div>
+    <div class="col-10 col-sm-8 col-md-4 mt-4 m-auto fw-bold">
+      <label for="validationServerUsername" class="form-label">Email</label>
+   
+        <input type="text" class="form-control " id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"  formControlName="email" required>
+        <div class="text-danger "  *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].touched || userForm.controls['email'].touched)">
+            <span *ngIf="userForm.controls['email'].errors?.['required']">This is Required</span>
+            <span *ngIf="userForm.controls['email'].errors?.['email']">Email is not Proper</span>
+          </div>
+    </div>
+    <div class="col-10 col-sm-8 col-md-4 mt-4 m-auto fw-bold">
+      <label for="validationServerUsername" class="form-label">Password</label>
+   
+        <input type="password" class="form-control " id="validationServerUsername" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback"  formControlName="password" required>
+        <div class="text-danger " *ngIf="userForm.controls['password'].invalid && (userForm.controls['password'].touched || userForm.controls['password'].touched)">
+            Password must be 6 characters long
+          </div>
+    </div>
+    
+
+    <div class="col-10 col-sm-8 col-md-4 mt-4 m-auto text-center  ">
+      <button class="btn btn-primary text-center " type="submit">Register</button>
+    </div>
+    <p routerLink="" class="m-auto  opacity-75 text-center  mt-4" style="cursor: pointer;">Already have account <u>Login</u> </p>
+
+  </form>
+
