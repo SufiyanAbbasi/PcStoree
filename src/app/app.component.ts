@@ -14,7 +14,7 @@ import { TempdrivenComponent } from "./components/tempdriven/tempdriven.componen
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, NavbarComponent, HomeComponent, HttpClientModule, FooterComponent, ReactiveformComponent, TempdrivenComponent]
+    imports: [CommonModule, RouterOutlet, NavbarComponent, HomeComponent, HttpClientModule, FooterComponent, ReactiveformComponent, TempdrivenComponent, HttpClientModule]
 })
 export class AppComponent {
   title = 'comlap';

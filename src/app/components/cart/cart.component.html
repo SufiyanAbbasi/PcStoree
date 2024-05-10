@@ -1,4 +1,4 @@
-<div *ngIf="cartItems.length > 0; else emptyCart">
+<!-- <div *ngIf="cartItems.length > 0; else emptyCart">
     <h3>Cart Items</h3>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
@@ -8,7 +8,7 @@
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Action</th> <!-- Add Action column for delete button -->
+                    <th>Action</th> 
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +37,29 @@
                 </ng-container>
             </tbody>
         </table>
+    </div>
+</div>
+<ng-template #emptyCart>
+    <div class="empty-cart text-center">
+        <p>Your cart is empty !!!!!!!</p>
+        <h1 class="text-black ">Add Something </h1>
+    </div>
+</ng-template> -->
+
+<div *ngIf="cartItems.length > 0; else emptyCart" class="mx-sm-5 pt-5">
+    <h3 class="text-center ">Cart Items</h3>
+    <div class="row">
+        <div class="col-md-6 col-lg-4" *ngFor="let item of cartItems">
+            <div class="card mb-3">
+                <img [src]="item.imageUrl" [alt]="item.name" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.name }}</h5>
+                    <p class="card-text">Price: ${{ item.price }}</p>
+                    <p class="card-text">Quantity: {{ item.quantity }}</p>
+                    <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <ng-template #emptyCart>

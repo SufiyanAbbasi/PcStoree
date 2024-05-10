@@ -20,4 +20,25 @@
     </div>
   </div>
 
-  
+
+   <!-- <div class="container mt-5">
+    <h1 class="text-uppercase fw-bold" style="letter-spacing: 4px; color:#2e65a4">Laptops</h1>
+    <h5 class="text-uppercase text-muted p-1" style="letter-spacing: 4px;">Choosing the Right Laptop for You</h5>
+    <div class="row mt-4">
+      <ng-container *ngFor="let item of filteredItems; trackBy: trackByFn">
+        <div class="col-sm-6 col-md-4 mb-4">
+          <div class="card">
+            <img class="card-img-top" [src]="item.imageUrl" alt="Item Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.name }}</h5>
+              <p class="card-text">{{ item.description }}</p>
+              <p class="card-text">Price: ${{ item.price }}</p>
+              <button class="btn btn-primary" (click)="viewItem(item)">View</button>
+              <button class="btn btn-success ms-2" (click)="addItemToCart(item)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+   -->

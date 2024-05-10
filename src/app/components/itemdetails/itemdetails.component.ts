@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Item } from '../../interface/item';
 import {  ItemService } from '../../services/item-data.service';
 import { CartService } from '../../services/cart.service';
+import {  HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-itemdetails',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,HttpClientModule],
   templateUrl: './itemdetails.component.html',
   styleUrl: './itemdetails.component.css'
 })
@@ -18,12 +19,46 @@ export class ItemdetailsComponent {
 
   constructor(private itemService: ItemService, private route: ActivatedRoute, private cartService: CartService) { }
 
+  // ngOnInit(): void {
+  //   this.route.params.subscribe(params => {
+  //     this.type = params['type'];
+  //     const itemId = Number(params['id']);  // Ensure this is a number
+  //     if (this.type && itemId) {
+  //       this.itemService.getItemById(this.type, itemId).subscribe({
+  //         next: (data) => {
+  //           this.item = data;
+  //         },
+  //         error: (error) => {
+  //           console.error('There was an error retrieving the item:', error);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.type = params['type'];
-      const itemId = +params['id'];
-      if (this.type) {
-        this.item = this.itemService.getItemById(this.type, itemId);
+      const itemId = Number(params['id']); // Ensure this is a number
+  
+      if (this.type && itemId) {
+        this.itemService.getItemById(this.type, itemId)
+          .subscribe({
+            next: (data) => {
+              this.item = data;
+              debugger
+              console.log(data);
+              
+            },
+            error: (error) => {
+              console.error('Error retrieving item:', error);
+              if (error.status === 404) {
+                // Item not found, handle gracefully
+                this.item = undefined; // Set item to undefined to avoid rendering issues
+                alert('Item with ID ' + itemId + ' not found in category ' + this.type);
+              }
+            }
+          });
       }
     });
   }

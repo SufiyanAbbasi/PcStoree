@@ -28,4 +28,14 @@
   .alert {
     margin-top: 1rem; /* Add some space above the alert message */
   }
-  
+  .btn-primary1 {
+    background-color: #a8719d;
+    border-radius: 5px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-primary1:hover {
+
+    background-color: #954570;
+}
