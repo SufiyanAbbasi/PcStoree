@@ -1,0 +1,48 @@
+/* style="" */
+.profile-box {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    top: 55px;
+    right: -30px;
+    background-color: white;
+    width: 150px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.profile-box ul {
+    padding: 0;
+    margin: 0;
+}
+
+.profile-box li {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    list-style: none;
+    cursor: pointer;
+}
+
+.profile-box li:hover {
+    background-color: #f0f0f0;
+}
+
+.profile-box li:first-child {
+    border-bottom: 1px solid #ccc;
+}
+
+.profile-box li:last-child {
+    border-top: 1px solid #ccc;
+}
+
+.profile-box li:last-child:hover {
+    border-bottom: none;
+}
+
+.profile-box li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-box li a:hover {
+    text-decoration: underline;
+}

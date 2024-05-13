@@ -1,10 +1,10 @@
-<h5 class="text-muted mt-4 text-center">Login Form</h5>
+<h5 class="text-muted pt-5 text-center">Login Form</h5>
 <form class=" g-3 needs-validation mt-5  py-5  custom-form"#userForm="ngForm" novalidate>
   
     <div class="col-10 col-md-8 position-relative mt-3 m-auto ">
-      <label for="validationTooltipUsername" class="form-label fw-bold ">Email</label>
-         <input type="text" name="userName"  [(ngModel)]="userObj.userName" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" #email="ngModel" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required>
-        <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty) || isFormSubmited">
+      <label for="validationTooltipEmail" class="form-label fw-bold ">Email</label>
+         <input type="email" name="email"  [(ngModel)]="userObj.userName" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" #email="ngModel"  required>
+        <div class="text-danger" *ngIf="email.invalid && (email.touched || email.dirty) || isFormSubmitted">
             <span *ngIf="email.errors?.['pattern']">Please choose valid email</span>
             <span *ngIf="email.errors?.['required']">This is required</span>
         </div>
@@ -14,12 +14,12 @@
         <input type="password" name="password" [(ngModel)]="userObj.password" class="form-control" id="validationTooltipPassword"
                aria-describedby="validationTooltipPasswordPrepend" required minlength="8" #password="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.*\s).{8,}">
       
-        <div class="text-danger" *ngIf="password.invalid && (password.touched || isFormSubmited)">
-          <span *ngIf="password.errors?.['required']">Password is required.</span>
-          <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long.</span>
-          <span *ngIf="password.errors?.['pattern']">Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.</span>
+        <div class="text-danger" *ngIf="password.invalid && (password.touched || isFormSubmitted)">
+          <span *ngIf="password.errors?.['required']">Password is invalid</span>
         </div>
     </div>
+ 
+    
     <div class="col-12  mt-4 text-center">
       <button class="btn btn-primary " type="submit" (click)="onSubmit(userForm)">Login</button>
     </div>

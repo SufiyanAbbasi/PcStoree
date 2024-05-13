@@ -1,4 +1,4 @@
-<h5 class="text-muted mt-4 text-center ">Sign Up Form</h5>
+<h5 class="text-muted pt-5 text-center ">Sign Up Form</h5>
 <form class=" g-3 mt-5 " [formGroup]="userForm">
     <div class="col-10 col-sm-8 col-md-4 m-auto  mt-3 fw-bold">
       <label for="validationServer01" class="form-label">Name</label>
@@ -28,7 +28,7 @@
     
 
     <div class="col-10 col-sm-8 col-md-4 mt-4 m-auto text-center  ">
-      <button class="btn btn-primary text-center " type="submit">Register</button>
+      <button class="btn btn-primary text-center " type="submit" (click)="onSubmit()">Register</button>
     </div>
     <p routerLink="" class="m-auto  opacity-75 text-center  mt-4" style="cursor: pointer;">Already have account <u>Login</u> </p>
 

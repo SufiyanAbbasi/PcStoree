@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary py-3 ">
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3 " *ngIf="showNavbar" >
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="home">PC-Store</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -31,10 +31,32 @@
         <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
       </form>
       <ng-container *ngIf="!showSearchBox" >
-        <!-- Content for Home Component -->
-        <span *ngIf="isHomeComponent()" class="me-lg-5 pe-lg-5">Buy The Best!</span>
-        <!-- Content for Cart Component -->
-        <span *ngIf="isCartComponent()" class="me-lg-5 pe-lg-5">Your Cart</span>
+        <p class="text-black mt-3 text-muted fw-bold text-uppercase">{{username}}</p>
+        <span *ngIf="isHomeComponent() || isCartComponent() " class="me-lg-5 pe-lg-5">
+          <div (click)="toggleProfileBox()" style="position: relative;">
+            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 50px; height: 50px; cursor: pointer;">
+            <div *ngIf="showProfileBox" class="profile-box rounded-3 " >
+              <!-- Add your content here -->
+              <ul class="text-muted " >
+                <li class="pt-2 " >My Profile</li> 
+                <li class="pt-2" routerLink="cart">Cart</li>
+                <li class="pt-2" (click)="logout()">Logout</li>
+              </ul>
+            </div>
+          </div>
+        </span>
+        <!-- <span *ngIf="isCartComponent()" class="me-lg-5 pe-lg-5">
+          <div (click)="toggleProfileBox()" style="position: relative;">
+            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 50px; height: 50px; cursor: pointer;">
+            <div *ngIf="showProfileBox" class="profile-box rounded-3 " >
+              <ul class="text-muted " >
+                <li class="pt-2 " >My Profile</li> 
+                <li class="pt-2" routerLink="cart">Cart</li>
+                <li class="pt-2" routerLink="">Logout</li>
+              </ul>
+            </div>
+          </div>        
+        </span> -->
       </ng-container>
     </div>
   </div>

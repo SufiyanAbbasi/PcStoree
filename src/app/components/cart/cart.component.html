@@ -52,11 +52,21 @@
         <div class="col-md-6 col-lg-4" *ngFor="let item of cartItems">
             <div class="card mb-3">
                 <img [src]="item.imageUrl" [alt]="item.name" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
-                    <p class="card-text">Price: ${{ item.price }}</p>
-                    <p class="card-text">Quantity: {{ item.quantity }}</p>
-                    <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">Delete</button>
+                <div class="d-flex">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <p class="card-text">Price: ${{ item.price* item.quantity }}</p>
+                        <p class="card-text ">Quantity: <span class=" text-danger fw-bold"> {{ item.quantity }}</span>
+                        </p>
+                        <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">Delete</button>
+                    </div>
+                    <div class="input-group mt-auto mb-4 me-2" style="width: 100px; height: 30px;" >
+                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold" type="button" style="width: 30px;"
+                            (click)="decreaseQuantity(item)">-</button>
+                        <input type="text" class="form-control text-center" [value]="item.quantity" readonly>
+                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold " type="button" style="width: 30px;"
+                            (click)="increaseQuantity(item)">+</button>
+                    </div>
                 </div>
             </div>
         </div>
