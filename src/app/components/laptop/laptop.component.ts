@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Item } from '../../interface/item';
 import { CartService } from '../../services/cart.service';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-laptop',
@@ -21,7 +22,8 @@ export class LaptopComponent {
     private router: Router,
     private cartService: CartService,
     private searchService: SearchService,
-    private http:HttpClient
+    private http:HttpClient,
+    private authService:AuthService
   ) {}
 
   filteredItems: Item[] = [];
@@ -121,11 +123,36 @@ export class LaptopComponent {
   // }
 
   addItemToCart(item: Item) {
-    // Implement logic to add item to cart
     alert("item Added to cart ")
     this.cartService.addToCart(item);
     console.log('Add item to cart:', item);
   }
+
+  // addItemToCart(item: Item) {
+  //   const userId = this.authService.getUserId(); // Get the user ID from the AuthService
+  //   if (userId === null) {
+  //     console.error('User is not logged in.');
+  //     return;
+  //   }
+  
+  //   const cartItem = {
+  //     userId: userId, // Assign the user ID
+  //     productId: item.id, // Assign the product ID
+  //     quantity: 1 // Set the quantity to 1 or the desired amount
+  //   };
+  
+  //   this.cartService.addToCart(cartItem).subscribe({
+  //     next: (response) => {
+  //       console.log('Item successfully added to cart', response);
+  //     },
+  //     error: (error) => {
+  //       console.error('Failed to add item to cart', error);
+  //       console.error('Error details:', error.error); // Log the detailed error
+  //     }
+  //   });
+  // }
+  
+
 
   // trackByFn(index: number, item: Item): number {
   //   return item.id; // Use a unique identifier from your item object

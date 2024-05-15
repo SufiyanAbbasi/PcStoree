@@ -21,7 +21,7 @@
         </li>
         <!-- navbar.component.html -->
         <li class="nav-item ms-lg-5">
-          <a class="nav-link" routerLink="cart">Cart <span class="badge badge-secondary" style="background-color: red;">{{cartItemCount}}</span></a>
+          <a class="nav-link" routerLink="cart">Cart <span class="badge badge-secondary" style="background-color: red;">{{ cartItemCount$ | async }}</span></a>
         </li>
         
 

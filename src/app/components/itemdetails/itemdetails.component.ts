@@ -65,7 +65,7 @@ export class ItemdetailsComponent {
 
   addToCart(item: Item): void {
     this.cartService.addToCart(item); // Call the addToCart method from the CartService
-    // alert('Item added to cart successfully!');
+    alert('Item added to cart successfully!');
   }
 }
 

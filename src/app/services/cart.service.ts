@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../interface/item';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 export class CartService {
   private cart: Item[] = [];
   public cartItemCount = new BehaviorSubject<number>(0);
-  constructor(private router: Router) { }
+  // private baseUrl = 'https://localhost:7250/api/CartItems';
+  constructor(private router: Router, private http: HttpClient) { }
 
 
   addToCart(item: Item): void {
@@ -24,6 +26,13 @@ export class CartService {
     this.router.navigate(['/cart']);
   }
   
+
+
+  // addToCart(cartItem: { userId: number, productId: number, quantity: number }): Observable<any> {
+  //   return this.http.post(this.baseUrl, cartItem);
+  // }
+  
+
   removeFromCart(item: Item): void {
     const index = this.cart.findIndex(cartItem => cartItem.id === item.id);
     if (index !== -1) {
@@ -36,9 +45,20 @@ export class CartService {
     }
   }
 
+
+  // deleteCartItem(id: number): Observable<any> {
+  //   return this.http.delete(`${this.baseUrl}/${id}`);
+  // }
+
   getCartItems(): Item[] {
     return this.cart;
   }
+  // Method to get cart items for a specific user
+  // getCartItems(userId: number): Observable<any> {
+  //   return this.http.get(`${this.baseUrl}?userId=${userId}`);
+  // }
+
+
 
   getCartItemCount(): BehaviorSubject<number> {
     return this.cartItemCount;
@@ -53,4 +73,7 @@ export class CartService {
     this.cart = [...cartItems];
     console.log('Cart updated:', this.cart);
   }
+  // updateCartItem(cartItem: Item): Observable<any> {
+  //   return this.http.put(`${this.baseUrl}/${cartItem.id}`, cartItem);
+  // }
 }

@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UiService } from '../../services/navbar.service';
 import { AuthService } from '../../services/auth.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-tempdriven',
@@ -13,30 +14,66 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './tempdriven.component.css'
 })
 export class TempdrivenComponent {
-  isFormSubmitted : boolean = false;
+  isFormSubmitted: boolean = false;
   errorMessage: string = '';
-  constructor(private uiService: UiService, private authService: AuthService, private router:Router) { }
+  constructor(private uiService: UiService, private authService: AuthService, private router: Router, private cartService:CartService) { }
 
   onSubmit(form: NgForm): void {
     this.isFormSubmitted = true;
     if (form.valid) {
       this.authService.login(form.value).subscribe({
         next: (response) => {
-          // Handle successful login
+          if (response) {
+            let username = response.name;
+            localStorage.setItem('username', username);
+            this.router.navigate(['/home']);
+          }
           console.log('Login successful', response);
-          
-          // Optionally, redirect to another page
-          this.router.navigate(['/home']);
+          alert('Login Succesfully!')
         },
         error: (error) => {
-          // Handle login error
           console.error('Login error', error);
-          this.errorMessage = 'Invalid email or password'; // Display error message to user
+          this.errorMessage = 'Invalid email or password'; 
         }
       });
-    }
 
+    }
+    if (!form.valid) {
+      alert('Wrong Credentials')
+    }
   }
+
+  // onSubmit(form: NgForm): void {
+  //   this.isFormSubmitted = true;
+  //   if (form.valid) {
+  //     this.authService.login(form.value).subscribe({
+  //       next: (response) => {
+  //         if (response) {
+  //           const username = response.name;
+  //           const userId = response.id; // Assuming you get the user ID in the response
+  //           localStorage.setItem('username', username);
+  //           localStorage.setItem('userId', userId.toString());
+  //           this.router.navigate(['/home']);
+  //           this.cartService.getCartItems(userId).subscribe(cartItems => {
+  //             // Store the cart items in a service or state management
+  //             console.log(cartItems);
+  //             alert("Login Succesfull!")
+  //             // Update cart item count or other related UI updates here
+  //           });
+  //         }
+  //       },
+  //       error: (error) => {
+  //         console.error('Login error', error);
+  //         this.errorMessage = 'Invalid email or password';
+  //       }
+  //     });
+  //   }
+  //   if (!form.valid) {
+  //         alert('Wrong Credentials')
+  //      }
+  // }
+  
+
   userObj: any = {
     firstName: '',
     userName: '',
@@ -51,14 +88,14 @@ export class TempdrivenComponent {
 
 
 
-// In your login/signup component for hide navbar
+  // In your login/signup component for hide navbar
 
-ngOnInit(): void {
-  this.uiService.setShowNavbar(false);
-}
+  ngOnInit(): void {
+    this.uiService.setShowNavbar(false);
+  }
 
-ngOnDestroy(): void {
-  this.uiService.setShowNavbar(true);
-}
+  ngOnDestroy(): void {
+    this.uiService.setShowNavbar(true);
+  }
 
 }
