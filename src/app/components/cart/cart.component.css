@@ -1,7 +1,5 @@
-
-
 .empty-cart {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -76,3 +74,9 @@
 .delete-button:hover {
     background-color: #f5222d;
 }
+@media screen and (max-width:940px) {
+    .empty-cart{
+        top: 70%;
+    }
+}
+

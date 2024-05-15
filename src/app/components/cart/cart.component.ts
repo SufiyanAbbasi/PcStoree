@@ -17,31 +17,24 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService, private authService:AuthService) { }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCartItems();
-    // this.loadCartItems();
+    // this.cartItems = this.cartService.getCartItems();
+    this.loadCartItems();
   }
 
-// loadCartItems(): void {
-//   const userId = this.authService.getUserId();
-//   if (userId !== null) {
-//     this.cartService.getCartItems(userId).subscribe({
-//       next: (items) => this.cartItems = items,
-//       error: (error) => console.error('Error fetching cart items:', error)
-//     });
-//   } else {
-//     console.error('User is not logged in.');
-//   }
-// }
-  deleteItem(item: Item): void {
-    const index = this.cartItems.indexOf(item);
-    if (index !== -1) {
-      if (item.quantity > 1) {
-        item.quantity--; // Decrease quantity if greater than one
-      } else {
-        this.cartItems.splice(index, 1); // Remove the item if quantity is one
-      }
-      // Optionally, you may want to update total price or perform any other actions
+  loadCartItems(): void {
+    const userId = this.authService.getUserId();
+    if (userId) {
+      this.cartService.loadCartFromLocalStorage(); // Load the cart for the specific user
+      this.cartItems = this.cartService.getCartItems();
+    } else {
+      console.error('User is not logged in.');
     }
+  }
+
+
+  deleteItem(item: Item): void {
+    this.cartService.removeFromCart(item);
+    this.cartItems = this.cartService.getCartItems();
   }
 
   increaseQuantity(item: Item): void {
@@ -52,19 +45,12 @@ export class CartComponent implements OnInit {
       alert("you can add only 5")
     }
   }
-  // increaseQuantity(item: Item): void {
-  //   if (item.quantity < 5) {
-  //     item.quantity++;
-  //     this.cartService.updateCartItem(item).subscribe(); // Assuming updateCartItem adjusts quantity in the backend
-  //   } else {
-  //     alert("You can add only 5");
-  //   }
-  // }
-
+ 
   decreaseQuantity(item: Item): void {
     if (item.quantity > 1) {
       item.quantity--; // Decrease quantity locally
       this.cartService.updateCart(this.cartItems); // Update cart in service
+      this.cartService.saveCartToLocalStorage(); // Save updated cart to localStorage
     }
   }
 }

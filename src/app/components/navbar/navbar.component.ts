@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../interface/item';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterModule, CommonModule, FormsModule],
+  imports: [RouterLink, RouterModule, CommonModule, FormsModule,RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -44,21 +44,13 @@ export class NavbarComponent implements OnInit {
     const storedUserId = localStorage.getItem('userId');
     if (storedUsername && storedUserId) {
       this.username = storedUsername;
-      const userId = parseInt(storedUserId, 10);
-    
-
-    // this.cartService.getCartItems(userId).subscribe(cartItems => {
-    //   // Store the cart items in a service or state management
-    //   console.log(cartItems);
-    //   // Update cart item count or other related UI updates here
-    // });
+      const userId = parseInt(storedUserId, 10);  
   }
     // Subscribe to changes in the authenticated user
     this.loggedInUser();
 
 
     this.getCartCount();
-    console.log('testing');
 
   }
 
@@ -108,8 +100,8 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  toggleProfileBox(): void {
-    this.showProfileBox = !this.showProfileBox;
+  toggleProfileBox(show: boolean): void {
+    this.showProfileBox = show;
   }
 
   logout(): void {

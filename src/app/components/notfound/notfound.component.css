@@ -1,0 +1,12 @@
+h1 {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+    color: red;
+  }
+
+@media screen and (max-width:500px) {
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+      }
+}

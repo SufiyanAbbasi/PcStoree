@@ -1,48 +1,36 @@
-footer.footer {
-    background-color:#4b686b; /* Dark background */
-    color: #5f5959; /* Light text */
-    padding: 1rem 0; /* Top and bottom padding */
-    border-top: 1px solid grey;
-  }
-  
-  footer.footer .container {
-    display: flex;
-    justify-content: space-between; /* Evenly distribute columns */
-  }
-  
-  footer.footer h3 {
-    margin-bottom: 1.5rem; /* Space below heading */
-    font-size: 1.2rem; /* Adjust heading size */
-    font-weight: bold; /* Bold text */
-  }
-  
-  footer.footer p {
-    line-height: 1.5; /* Adjust line spacing for better readability */
-  }
-  
-  footer.footer ul {
-    list-style: none; /* Remove default list style */
-    padding: 0; /* Remove default padding */
-  }
-  
-  footer.footer li {
-    margin-bottom: 1rem; /* Space between list items */
-  }
-  
-  footer.footer li i {
-    margin-right: 10px; /* Space between icon and text */
-    color: #ffc107; /* Orange accent color for icons */
-  }
-  
-  /* Media queries for responsive adjustments */
-  @media (max-width: 768px) {
-    footer.footer .container {
-      flex-direction: column; /* Stack columns on smaller screens */
-      align-items: center; /* Center content vertically */
-    }
-  
-    footer.footer h3 {
-      text-align: center; /* Center headings on smaller screens */
-    }
-  }
-  
+.mybtn {
+  /* margin: 0 8rem; */
+  background-color: #D6B2D3;
+  color: white;
+  height: 50px;
+}
+
+.mybtn:hover {
+  border: 2px solid #D6B2D3;
+  background: white;
+  color: black;
+}
+input:hover{
+  outline: none;
+}
+input:focus{
+  outline: none;
+
+}
+svg{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+svg:hover{
+  color:#fb4b3a;
+}
+ul li{
+  opacity: 0.8;
+}
+ul li:hover{
+  color:#fb4b3a;
+}
+.mycp{
+  cursor: pointer;
+}

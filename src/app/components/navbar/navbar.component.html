@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary py-3 " *ngIf="showNavbar" >
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3  " *ngIf="showNavbar" >
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="home">PC-Store</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -7,20 +7,20 @@
     </button>
     <div class="collapse navbar-collapse ms-lg-5 ps-lg-5" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item ms-lg-5 ps-lg-5">
-          <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+        <li class="nav-item ms-lg-5 ps-lg-5" routerLinkActive="active">
+          <a class="nav-link " aria-current="page" routerLink="home">Home</a>
         </li>
-        <li class="nav-item ms-lg-5">
+        <li class="nav-item ms-lg-5" routerLinkActive="active">
           <a class="nav-link" routerLink="laptop">Laptop</a>
         </li>
-        <li class="nav-item ms-lg-5 ">
+        <li class="nav-item ms-lg-5 " routerLinkActive="active">
           <a class="nav-link" routerLink="computer">Computer</a>
         </li>
-        <li class="nav-item ms-lg-5">
+        <li class="nav-item ms-lg-5" routerLinkActive="active">
           <a class="nav-link" routerLink="mobile">Mobiles</a>
         </li>
         <!-- navbar.component.html -->
-        <li class="nav-item ms-lg-5">
+        <li class="nav-item ms-lg-5" routerLinkActive="active">
           <a class="nav-link" routerLink="cart">Cart <span class="badge badge-secondary" style="background-color: red;">{{ cartItemCount$ | async }}</span></a>
         </li>
         
@@ -30,33 +30,21 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (keyup)="onSearchTermChange($event)">
         <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
       </form>
-      <ng-container *ngIf="!showSearchBox" >
-        <p class="text-black mt-3 text-muted fw-bold text-uppercase">{{username}}</p>
+      <ng-container *ngIf="!showSearchBox">
+        <p class="text-black  text-muted fw-bold text-uppercase  mt-3">{{username}}</p>
         <span *ngIf="isHomeComponent() || isCartComponent() " class="me-lg-5 pe-lg-5">
-          <div (click)="toggleProfileBox()" style="position: relative;">
-            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 50px; height: 50px; cursor: pointer;">
+          <div   (mouseenter)="toggleProfileBox(true)" (mouseleave)="toggleProfileBox(false)" style="position: relative;">
+            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 40px; height: 40px; cursor: pointer;">
             <div *ngIf="showProfileBox" class="profile-box rounded-3 " >
               <!-- Add your content here -->
               <ul class="text-muted " >
-                <li class="pt-2 " >My Profile</li> 
+                <li class="pt-2 " routerLink="myprofile">My Profile</li> 
                 <li class="pt-2" routerLink="cart">Cart</li>
                 <li class="pt-2" (click)="logout()">Logout</li>
               </ul>
             </div>
           </div>
         </span>
-        <!-- <span *ngIf="isCartComponent()" class="me-lg-5 pe-lg-5">
-          <div (click)="toggleProfileBox()" style="position: relative;">
-            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 50px; height: 50px; cursor: pointer;">
-            <div *ngIf="showProfileBox" class="profile-box rounded-3 " >
-              <ul class="text-muted " >
-                <li class="pt-2 " >My Profile</li> 
-                <li class="pt-2" routerLink="cart">Cart</li>
-                <li class="pt-2" routerLink="">Logout</li>
-              </ul>
-            </div>
-          </div>        
-        </span> -->
       </ng-container>
     </div>
   </div>

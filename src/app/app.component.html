@@ -11,7 +11,11 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
     <div style="background: rgb(238,174,202);
                 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
                 min-height:100vh ;">
-                  <app-navbar></app-navbar>
-                  <router-outlet></router-outlet>     
+                  <app-navbar class="fixed-top "></app-navbar>
+                  <div style="margin-top: 80px;">
+                  <router-outlet></router-outlet>  
+                </div>   
     </div>
 </body>
+<app-footer></app-footer>
+

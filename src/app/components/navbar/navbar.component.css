@@ -1,8 +1,13 @@
 /* style="" */
+.active {
+    font-weight: bolder;
+    /* padding: 8px 16px; */
+    transition: background-color 0.3s ease;
+}
+
 .profile-box {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     position: absolute;
-    top: 55px;
+    top: 40px;
     right: -30px;
     background-color: white;
     width: 150px;
@@ -23,6 +28,7 @@
 
 .profile-box li:hover {
     background-color: #f0f0f0;
+    color: blue;
 }
 
 .profile-box li:first-child {
@@ -45,4 +51,73 @@
 
 .profile-box li a:hover {
     text-decoration: underline;
+}
+
+@media screen and (max-width: 992px) {
+    .profile-box {
+        top: 0px;
+        left: 60px;
+        width: 350px;
+        box-shadow: none;
+        border: none;
+
+    }
+
+    .profile-box ul {
+        display: flex;
+    }
+
+    .profile-box li {
+        padding-left: 40px;
+        transition: background-color 0.3s ease;
+        list-style: none;
+    }
+
+    .profile-box li:first-child {
+        border-bottom: none;
+    }
+
+    .profile-box li:last-child {
+        border-top: none;
+    }
+
+}
+
+@media screen and (max-width: 482px) {
+    .profile-box {
+        top: 0px;
+        left: 60px;
+        width: 250px;
+    }
+
+    .profile-box ul {
+        display: flex;
+    }
+
+    .profile-box li {
+        padding-left: 10px;
+        transition: background-color 0.3s ease;
+        list-style: none;
+    }
+
+}
+
+@media screen and (max-width: 382px) {
+    .profile-box {
+        top: 0px;
+        left: 50px;
+        width: 230px;
+
+    }
+
+    .profile-box ul {
+        display: flex;
+    }
+
+    .profile-box li {
+        padding-left: 10px;
+        transition: background-color 0.3s ease;
+        list-style: none;
+    }
+
 }

@@ -20,7 +20,7 @@ export class TempdrivenComponent {
 
   onSubmit(form: NgForm): void {
     this.isFormSubmitted = true;
-    if (form.valid) {
+    if (form.valid) { 
       this.authService.login(form.value).subscribe({
         next: (response) => {
           if (response) {
@@ -43,35 +43,6 @@ export class TempdrivenComponent {
     }
   }
 
-  // onSubmit(form: NgForm): void {
-  //   this.isFormSubmitted = true;
-  //   if (form.valid) {
-  //     this.authService.login(form.value).subscribe({
-  //       next: (response) => {
-  //         if (response) {
-  //           const username = response.name;
-  //           const userId = response.id; // Assuming you get the user ID in the response
-  //           localStorage.setItem('username', username);
-  //           localStorage.setItem('userId', userId.toString());
-  //           this.router.navigate(['/home']);
-  //           this.cartService.getCartItems(userId).subscribe(cartItems => {
-  //             // Store the cart items in a service or state management
-  //             console.log(cartItems);
-  //             alert("Login Succesfull!")
-  //             // Update cart item count or other related UI updates here
-  //           });
-  //         }
-  //       },
-  //       error: (error) => {
-  //         console.error('Login error', error);
-  //         this.errorMessage = 'Invalid email or password';
-  //       }
-  //     });
-  //   }
-  //   if (!form.valid) {
-  //         alert('Wrong Credentials')
-  //      }
-  // }
   
 
   userObj: any = {
@@ -80,15 +51,6 @@ export class TempdrivenComponent {
     password: ''
   }
 
-  // onSubmit(form : NgForm){
-  //   debugger;
-  //   this.isFormSubmited = true;
-  // }
-
-
-
-
-  // In your login/signup component for hide navbar
 
   ngOnInit(): void {
     this.uiService.setShowNavbar(false);

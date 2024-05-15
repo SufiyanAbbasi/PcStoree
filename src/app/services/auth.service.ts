@@ -12,27 +12,24 @@ export class AuthService {
   public loggedInUser: Observable<any> = this.loggedInUserSubject.asObservable();
 
   constructor(private http: HttpClient) {
-     // Initialize the user from local storage on service creation
-     const storedUsername = localStorage.getItem('username');
-     if (storedUsername) {
-       this.loggedInUserSubject.next({ name: storedUsername });
-     }
-   }
+    // Initialize the user from local storage on service creation
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      this.loggedInUserSubject.next({ name: storedUsername });
+    }
 
-  // login(credentials: any): Observable<any> {
-  //   return this.http.post<any>(`${this.baseUrl}/login`, credentials).pipe(
-  //     tap(user => {
-  //       // Store the logged-in user's information in a BehaviorSubject
-  //       this.loggedInUserSubject.next(user);
-  //       localStorage.setItem('username', user.name);
-  //     })
-  //   );
-  // }
+    // const storedUserEmail = localStorage.getItem('useremail')
+    // if (storedUserEmail) {
+    //   this.loggedInUserSubject.next({ email: storedUserEmail });
+    // }
+  }
+
+
   login(credentials: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/login`, credentials).pipe(
       tap(user => {
         // Store user data in local storage or a suitable place
-        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));                                           
         this.loggedInUserSubject.next(user);
       })
     );
@@ -44,15 +41,18 @@ export class AuthService {
 
   logout(): void {
     console.log("user logout");
-    
     // Clear the logged-in user's information
     this.loggedInUserSubject.next(null);
     localStorage.removeItem('username');
+  }
+
+  isLoggedIn(): boolean {
+    return this.loggedInUserSubject.value !== null;
   }
 
   getUserId(): number | null {
     const user = localStorage.getItem('user');
     return user ? JSON.parse(user).id : null;  // Make sure the 'id' matches the key in your user object
   }
-  
+
 }
