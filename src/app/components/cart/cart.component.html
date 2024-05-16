@@ -1,5 +1,7 @@
-<div *ngIf="cartItems.length > 0; else emptyCart" class="mx-sm-5 pt-5">
-    <h3 class="text-center pt-lg-4 text-uppercase fw-bold fs-1 " style="letter-spacing: 4px; color:#2e65a4">Cart Items</h3>
+@if(cartItems.length > 0){
+<div class="mx-sm-5 pt-5">
+    <h3 class="text-center pt-lg-4 text-uppercase fw-bold fs-1 " style="letter-spacing: 4px; color:#2e65a4">Cart Items
+    </h3>
     <div class="row mt-lg-4 ">
         <div class="col-md-6 col-lg-4" *ngFor="let item of cartItems">
             <div class="card mb-3">
@@ -12,21 +14,22 @@
                         </p>
                         <button class="btn btn-danger btn-sm" (click)="deleteItem(item)">Delete</button>
                     </div>
-                    <div class="input-group mt-auto mb-4 me-2" style="width: 100px; height: 30px;" >
-                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold" type="button" style="width: 30px;"
-                            (click)="decreaseQuantity(item)">-</button>
+                    <div class="input-group mt-auto mb-4 me-2" style="width: 100px; height: 30px;">
+                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold" type="button"
+                            style="width: 30px;" (click)="decreaseQuantity(item)">-</button>
                         <input type="text" class="form-control text-center" [value]="item.quantity" readonly>
-                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold " type="button" style="width: 30px;"
-                            (click)="increaseQuantity(item)">+</button>
+                        <button class="btn btn-outline-secondary btn-sm bg-danger text-white fw-bold " type="button"
+                            style="width: 30px;" (click)="increaseQuantity(item)">+</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<ng-template #emptyCart >
+}
+@else(){
     <div class="empty-cart text-center">
         <p>Your cart is empty !!!!!!!</p>
         <h1 class="text-black ">Add Something </h1>
     </div>
-</ng-template>
+}

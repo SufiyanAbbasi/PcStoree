@@ -1,19 +1,20 @@
- <div class="container mt-5 pb-5">
-   <div *ngIf="item; else noItemTemplate" class="card text-center py-3 rounded-3 " style="  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); ">
+<div class="container mt-5 py-5">
+  @if(item){
+  <div class="card text-center py-3 rounded-3 " style="  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); ">
     <h2 class="mb-4 text-uppercase fw-bolder fs-1" style="letter-spacing: 3px; color: #954570;">{{ item.name }}</h2>
-      <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image" class="m-auto " style="max-width: 80%; height: 70%;">
-      <div class="card-body">
-        <h3 class="card-title">{{ item.name }}</h3>
-        <p class="card-text">{{ item.description }}</p>
-        <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
-        <button class="btn btn-primary1 fw-bold " (click)="addToCart(item)">Add to Cart</button>
-      </div>
+    <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image" class="m-auto "
+      style="max-width: 80%; height: 70%;">
+    <div class="card-body">
+      <h3 class="card-title">{{ item.name }}</h3>
+      <p class="card-text">{{ item.description }}</p>
+      <p class="card-text"><strong>Price:</strong> ${{ item.price }}</p>
+      <button class="btn btn-primary1 fw-bold " (click)="addToCart(item)">Add to Cart</button>
     </div>
-    <ng-template #noItemTemplate>
-      <div class="alert alert-warning" role="alert">
-        Item not found.
-      </div>
-    </ng-template>
   </div>
-  
- 
+  }
+  @else(){
+  <div class="alert alert-warning" role="alert">
+    Item not found !!
+  </div>
+  }
+</div>

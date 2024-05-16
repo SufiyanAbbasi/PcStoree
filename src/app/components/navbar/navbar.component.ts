@@ -13,14 +13,15 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterModule, CommonModule, FormsModule,RouterLinkActive],
+  imports: [RouterLink, RouterModule, CommonModule, FormsModule, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
   // userProfileImage: string | null = null;
   showNavbar: boolean = true;
-
+  items: Item[] = []
+  allItems: Item[] = []
   searchTerm: string = '';
   cartItemCount$!: Observable<number>;
   showSearchBox: boolean = true;
@@ -38,23 +39,25 @@ export class NavbarComponent implements OnInit {
 
     this.cartItemCount$ = this.cartService.getCartItemCount().asObservable();
 
- 
+
     //new changes
     const storedUsername = localStorage.getItem('username');
     const storedUserId = localStorage.getItem('userId');
     if (storedUsername && storedUserId) {
       this.username = storedUsername;
-      const userId = parseInt(storedUserId, 10);  
-  }
+      const userId = parseInt(storedUserId, 10);
+    }
     // Subscribe to changes in the authenticated user
     this.loggedInUser();
 
 
     this.getCartCount();
 
+ 
   }
 
-  loggedInUser(){
+
+  loggedInUser() {
     this.authService.loggedInUser.subscribe(user => {
       if (user) {
         this.username = user.name; // Update the username

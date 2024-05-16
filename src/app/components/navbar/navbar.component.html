@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary py-3  " *ngIf="showNavbar" >
+@if(showNavbar){
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="home">PC-Store</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -21,31 +22,42 @@
         </li>
         <!-- navbar.component.html -->
         <li class="nav-item ms-lg-5" routerLinkActive="active">
-          <a class="nav-link" routerLink="cart">Cart <span class="badge badge-secondary" style="background-color: red;">{{ cartItemCount$ | async }}</span></a>
+          <a class="nav-link" routerLink="cart">Cart <span class="badge badge-secondary"
+              style="background-color: red;">{{ cartItemCount$ | async }}</span></a>
         </li>
-        
+
 
       </ul>
-      <form class="d-flex" role="search" *ngIf="showSearchBox">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (keyup)="onSearchTermChange($event)">
-        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+      @if(showSearchBox){
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+          (keyup)="onSearchTermChange($event)">
       </form>
-      <ng-container *ngIf="!showSearchBox">
+      }
+      @if(!showSearchBox){
+      <ng-container>
         <p class="text-black  text-muted fw-bold text-uppercase  mt-3">{{username}}</p>
-        <span *ngIf="isHomeComponent() || isCartComponent() " class="me-lg-5 pe-lg-5">
-          <div   (mouseenter)="toggleProfileBox(true)" (mouseleave)="toggleProfileBox(false)" style="position: relative;">
-            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5" style="width: 40px; height: 40px; cursor: pointer;">
-            <div *ngIf="showProfileBox" class="profile-box rounded-3 " >
+        @if(isHomeComponent() || isCartComponent()){
+        <span class="me-lg-5 pe-lg-5">
+          <div (mouseenter)="toggleProfileBox(true)" (mouseleave)="toggleProfileBox(false)" style="position: relative;">
+            <img src="../../../assets/images/profile.png" alt="profile" class="border border-1 rounded-5"
+              style="width: 40px; height: 40px; cursor: pointer;">
+            @if(showProfileBox){
+            <div class="profile-box rounded-3 ">
               <!-- Add your content here -->
-              <ul class="text-muted " >
-                <li class="pt-2 " routerLink="myprofile">My Profile</li> 
+              <ul class="text-muted ">
+                <li class="pt-2 " routerLink="myprofile">My Profile</li>
                 <li class="pt-2" routerLink="cart">Cart</li>
                 <li class="pt-2" (click)="logout()">Logout</li>
               </ul>
             </div>
+            }
           </div>
         </span>
+        }
       </ng-container>
+      }
     </div>
   </div>
 </nav>
+}

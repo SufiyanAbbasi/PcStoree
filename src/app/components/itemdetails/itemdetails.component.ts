@@ -19,23 +19,6 @@ export class ItemdetailsComponent {
 
   constructor(private itemService: ItemService, private route: ActivatedRoute, private cartService: CartService) { }
 
-  // ngOnInit(): void {
-  //   this.route.params.subscribe(params => {
-  //     this.type = params['type'];
-  //     const itemId = Number(params['id']);  // Ensure this is a number
-  //     if (this.type && itemId) {
-  //       this.itemService.getItemById(this.type, itemId).subscribe({
-  //         next: (data) => {
-  //           this.item = data;
-  //         },
-  //         error: (error) => {
-  //           console.error('There was an error retrieving the item:', error);
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.type = params['type'];
