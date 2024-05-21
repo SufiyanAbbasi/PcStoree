@@ -8,8 +8,8 @@
             <div class="card">
                 <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image">
                 <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
-                    <p class="card-text">{{ item.description }}</p>
+                    <h5 class="card-title">{{ item.name | uppercase}}</h5>
+                    <p class="card-text">{{ item.description| uppercase }}</p>
                     <p class="card-text">Price: ${{ item.price }}</p>
                     <button class="btn btn-primary" (click)="viewItem(item)">View</button>
                     <button class="btn btn-success ms-2 " (click)="addItemToCart(item)">Add to Cart</button>

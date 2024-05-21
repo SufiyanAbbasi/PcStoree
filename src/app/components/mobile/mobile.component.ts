@@ -5,11 +5,12 @@ import { CartService } from '../../services/cart.service';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-mobile',
   standalone: true,
-  imports: [HttpClientModule],
+  imports: [HttpClientModule,UpperCasePipe],
   templateUrl: './mobile.component.html',
   styleUrl: './mobile.component.css'
 })

@@ -6,11 +6,14 @@
       @for(item of filteredItems; track item){
       <div class="col-sm-6 col-md-4 mb-4">
         <div class="card">
-          <img class="card-img-top" src="{{ item.imageUrl }}" alt="Item Image">
+          <!-- Interpolation doesnot work correctly with boolean val -->
+          <!-- <img class="card-img-top" src="{{item?item.imageUrl: 'No data' }}" alt="Item Image"> -->
+          <!-- Property Binding  -->
+          <img class="card-img-top" [src]="item.imageUrl" alt="Item Image">
           <div class="card-body">
-            <h5 class="card-title">{{ item.name }}</h5>
-            <p class="card-text">{{ item.description }}</p>
-            <p class="card-text">Price: ${{ item.price }}</p>
+            <h5 class="card-title">{{ item?item.name: 'No data'}}</h5>
+            <p class="card-text">{{ item?item.description: 'No data' }}</p>
+            <p class="card-text">Price: ${{ item?item.price: 'No data' }}</p>
             <button class="btn btn-primary" (click)="viewItem(item)">View</button>
             <button class="btn btn-success ms-2 " (click)="addItemToCart(item)">Add to Cart</button>
           </div>

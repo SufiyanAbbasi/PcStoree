@@ -3,7 +3,6 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterModule } fro
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../interface/item';
-import { ItemService } from '../../services/item-data.service';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 import { UiService } from '../../services/navbar.service';
@@ -36,10 +35,7 @@ export class NavbarComponent implements OnInit {
         this.showSearchBox = !['/', '/cart', '/home', '/signup'].includes(event.url);
       }
     });
-
     this.cartItemCount$ = this.cartService.getCartItemCount().asObservable();
-
-
     //new changes
     const storedUsername = localStorage.getItem('username');
     const storedUserId = localStorage.getItem('userId');
@@ -49,11 +45,7 @@ export class NavbarComponent implements OnInit {
     }
     // Subscribe to changes in the authenticated user
     this.loggedInUser();
-
-
-    this.getCartCount();
-
- 
+    this.getCartCount(); 
   }
 
 
@@ -71,7 +63,6 @@ export class NavbarComponent implements OnInit {
     this.cartService.getCartItemCount().subscribe(count => {
       console.log('Cart item count:', count); // Log the count to verify
       // this.cartItemCount$ = count;
-
       this.uiService.showNavbar.subscribe(visible => {
         this.showNavbar = visible;
       });

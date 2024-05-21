@@ -18,10 +18,6 @@ export class AuthService {
       this.loggedInUserSubject.next({ name: storedUsername });
     }
 
-    // const storedUserEmail = localStorage.getItem('useremail')
-    // if (storedUserEmail) {
-    //   this.loggedInUserSubject.next({ email: storedUserEmail });
-    // }
   }
 
 
