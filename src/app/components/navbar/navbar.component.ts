@@ -8,16 +8,18 @@ import { SearchService } from '../../services/search.service';
 import { UiService } from '../../services/navbar.service';
 import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterModule, CommonModule, FormsModule, RouterLinkActive],
+  imports: [RouterLink, RouterModule, CommonModule, FormsModule, RouterLinkActive, FontAwesomeModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit {
   // userProfileImage: string | null = null;
+  
   showNavbar: boolean = true;
   items: Item[] = []
   allItems: Item[] = []
