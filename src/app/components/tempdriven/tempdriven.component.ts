@@ -43,8 +43,6 @@ export class TempdrivenComponent {
     }
   }
 
-  
-
   userObj: any = {
     firstName: '',
     userName: '',

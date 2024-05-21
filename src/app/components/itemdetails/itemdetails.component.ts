@@ -29,7 +29,6 @@ export class ItemdetailsComponent {
           .subscribe({
             next: (data) => {
               this.item = data;
-              debugger
               console.log(data);
               
             },
