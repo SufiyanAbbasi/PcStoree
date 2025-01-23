@@ -6,6 +6,7 @@ import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UpperCasePipe } from '@angular/common';
+import { config } from '../../../config/config.dev';
 
 @Component({
   selector: 'app-mobile',
@@ -78,7 +79,7 @@ export class MobileComponent {
 
   ngOnInit(): void {
 
-    this.http.get<Item[]>('https://localhost:7250/api/Products?category=mobile').subscribe(data=>{
+    this.http.get<Item[]>(`${config.apiUrl}api/Products?category=mobile`).subscribe(data=>{
       this.filteredItems = data;
     })
 

@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { Item } from '../interface/item';  // Update the path according to your project structure
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { config } from '../../config/config.dev';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  private apiUrl = 'https://localhost:7250/api/Products'; // Adjust this URL to where your backend API is hosted
+  private apiUrl = `${config.apiUrl}api/Products`; // Adjust this URL to where your backend API is hosted
 
   constructor(private http: HttpClient) {}
 

@@ -7,6 +7,7 @@ import { CartService } from '../../services/cart.service';
 import { SearchService } from '../../services/search.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { config } from '../../../config/config.dev';
 
 @Component({
   selector: 'app-laptop',
@@ -31,7 +32,7 @@ export class LaptopComponent {
 
   ngOnInit() {
     //fetch data from backend
-    this.http.get<Item[]>('https://localhost:7250/api/Products?category=laptop').subscribe(data => {
+    this.http.get<Item[]>(`${config.apiUrl}api/Products?category=laptop`).subscribe(data => {
       this.filteredItems = data;  
     })
     
